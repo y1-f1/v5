@@ -8,7 +8,9 @@ menu:'<path d="M4 6h16M4 12h16M4 18h16"/>',
 close:'<path d="m18 6-12 12M6 6l12 12"/>',
 'chevron-down':'<path d="m7 10 5 5 5-5"/>',
 'arrow-up':'<path d="M12 19V5m-6 6 6-6 6 6"/>',
-check:'<path d="m5 12 4 4L19 6"/>'
+check:'<path d="m5 12 4 4L19 6"/>',
+settings:'<circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.7a8 8 0 0 1-1.7 1l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.7-1l-1.7.7-1.4-2.4 1.4-1.1a7 7 0 0 1 0-2l-1.4-1.1 1.4-2.4 1.7.7a8 8 0 0 1 1.7-1l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.7 1l1.7-.7 1.4 2.4-1.4 1.1a7 7 0 0 1 0 2Z"/>,
+'chevron-left':'<path d="m15 18-6-6 6-6"/>''
 };
 const render=(name,size=24)=>'<svg xmlns="http://www.w3.org/2000/svg" width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'+(paths[name]||paths['pix-mark'])+'</svg>';
 document.querySelectorAll('[data-icon]').forEach(el=>el.innerHTML=render(el.dataset.icon));

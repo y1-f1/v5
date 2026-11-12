@@ -20,7 +20,7 @@
    <button class="history-item"><span class="history-bullet"></span><span>تنظيم ملفات JavaScript</span></button>
    <button class="history-item"><span class="history-bullet"></span><span>تصميم واجهة حديثة</span></button>
   </div>
-  <div class="sidebar-bottom"><div class="profile-card"><span class="avatar">P</span><span><b>Pix</b><small>مساحة شخصية</small></span></div></div>
+  <div class="sidebar-bottom"><button class="settings-entry" id="openSettings"><span data-icon="settings"></span><span>الإعدادات</span><span class="settings-arrow" data-icon="chevron-left"></span></button><div class="profile-card"><span class="avatar">P</span><span><b>Pix</b><small>مساحة شخصية</small></span></div></div>
  </aside>
  <div class="scrim" id="scrim"></div>
  <main class="main-area">
@@ -51,5 +51,21 @@
   </footer>
  </main>
 </div>
+<div class="settings-backdrop" id="settingsBackdrop" aria-hidden="true"></div>
+<section class="settings-panel" id="settingsPanel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" aria-hidden="true">
+ <header class="settings-header"><div><span class="settings-kicker">PIX PREFERENCES</span><h2 id="settingsTitle">الإعدادات</h2></div><button class="icon-btn" id="closeSettings" aria-label="إغلاق الإعدادات" data-icon="close"></button></header>
+ <div class="settings-content">
+  <section class="setting-group"><h3>المظهر</h3><p>اختر الشكل الذي يناسبك.</p>
+   <div class="theme-options" role="group" aria-label="المظهر">
+    <button type="button" class="theme-option" data-theme-choice="light"><span class="theme-preview light-preview"></span><b>فاتح</b></button>
+    <button type="button" class="theme-option" data-theme-choice="dark"><span class="theme-preview dark-preview"></span><b>داكن</b></button>
+    <button type="button" class="theme-option" data-theme-choice="system"><span class="theme-preview system-preview"></span><b>النظام</b></button>
+   </div>
+  </section>
+  <section class="setting-group"><h3>حجم النص</h3><p>اضبط حجم النص داخل المحادثة.</p><div class="setting-control"><span>أ</span><input id="fontSizeSetting" type="range" min="13" max="18" step="1" value="14"><strong id="fontSizeValue">14px</strong></div></section>
+  <section class="setting-group"><h3>إرسال الرسائل</h3><p>اختر طريقة إرسال رسالتك من لوحة المفاتيح.</p><label class="toggle-setting"><span><b>Enter للإرسال</b><small>استخدم Shift + Enter لسطر جديد</small></span><input id="enterSendSetting" type="checkbox" checked><i></i></label></section>
+  <div class="settings-note">تُحفظ تفضيلاتك على هذا الجهاز تلقائيًا.</div>
+ </div>
+</section>
 <div class="toast" id="toast" role="status"></div>
 </body></html>
