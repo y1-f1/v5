@@ -10,9 +10,16 @@
 <div class="app-shell">
  <aside class="sidebar" id="sidebar" aria-label="القائمة الجانبية">
   <div class="sidebar-head"><a class="brand" href="#" aria-label="Pix"><span class="brand-symbol" data-icon="pix-mark"></span><span>pix</span></a><button class="icon-btn" id="closeSidebar" aria-label="إغلاق القائمة" data-icon="close"></button></div>
-  <button class="new-chat" id="newChat"><span data-icon="edit"></span><span>محادثة جديدة</span></button>
-  <label class="search-box"><span data-icon="search"></span><input id="searchChats" placeholder="ابحث في محادثاتك"></label>
-  <div class="side-links"><button class="side-link active"><span data-icon="messages"></span> المحادثات</button></div>
+  <nav class="sidebar-navigation" aria-label="التنقل">
+   <button class="new-chat" id="newChat"><span data-icon="edit"></span><span>محادثة جديدة</span><span class="new-chat-plus">+</span></button>
+   <label class="search-box"><span data-icon="search"></span><input id="searchChats" placeholder="ابحث في محادثاتك"></label>
+   <div class="sidebar-section-label">مساحة العمل</div>
+   <button class="side-link active"><span data-icon="messages"></span><span>المحادثات</span></button>
+   <button class="side-link"><span data-icon="folder"></span><span>المشاريع</span></button>
+   <button class="side-link"><span data-icon="code"></span><span>مساحة البرمجة</span></button>
+   <button class="side-link"><span data-icon="shapes"></span><span>الملفات والأدوات</span></button>
+  </nav>
+  <div class="sidebar-divider"></div>
   <div class="history-head"><span>الأخيرة</span><button class="icon-btn small" id="clearSearch" aria-label="مسح البحث" data-icon="close"></button></div>
   <div class="history-list" id="historyList">
    <button class="history-item selected"><span class="history-bullet"></span><span>بداية جديدة مع Pix</span></button>
@@ -20,7 +27,10 @@
    <button class="history-item"><span class="history-bullet"></span><span>تنظيم ملفات JavaScript</span></button>
    <button class="history-item"><span class="history-bullet"></span><span>تصميم واجهة حديثة</span></button>
   </div>
-  <div class="sidebar-bottom"><button class="settings-entry" id="openSettings"><span data-icon="settings"></span><span>الإعدادات</span><span class="settings-arrow" data-icon="chevron-left"></span></button><div class="profile-card"><span class="avatar">P</span><span><b>Pix</b><small>مساحة شخصية</small></span></div></div>
+  <div class="sidebar-bottom">
+   <button class="settings-entry" id="openSettings"><span data-icon="settings"></span><span>الإعدادات</span><span class="settings-arrow" data-icon="chevron-left"></span></button>
+   <div class="sidebar-footer-row"><div class="profile-card"><span class="avatar">P</span><span><b>Pix</b><small>مساحة شخصية</small></span></div><button class="icon-btn footer-more" aria-label="المزيد" data-icon="more"></button></div>
+  </div>
  </aside>
  <div class="scrim" id="scrim"></div>
  <main class="main-area">
