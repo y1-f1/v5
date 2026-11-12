@@ -34,3 +34,34 @@
 .sidebar-bottom{padding-top:11px}.settings-entry{height:42px;margin-bottom:8px}
 .sidebar-footer-row{display:flex;align-items:center;justify-content:space-between;gap:6px}.profile-card{padding:7px 8px;min-width:0}.footer-more{flex:none}
 @media(max-width:640px){.sidebar{width:min(390px,88vw);padding:20px 17px calc(13px + env(safe-area-inset-bottom))}.sidebar-head{padding-bottom:24px}.sidebar-navigation .new-chat{height:47px}.side-link{height:45px;font-size:14px}.history-item{height:46px;font-size:13px}}
+
+
+/* Compact sidebar: profile is the single entry to account and settings */
+.sidebar{width:min(350px,88vw);padding:20px 17px calc(13px + env(safe-area-inset-bottom))}
+.sidebar-head{padding:0 5px 21px}
+.sidebar-head .brand{flex-direction:row;gap:9px}
+.sidebar-navigation{gap:3px}
+.sidebar-navigation .new-chat{height:44px;margin-bottom:6px}
+.search-box{height:41px;margin-bottom:17px}
+.sidebar-section-label{padding-bottom:5px}
+.side-link{height:40px}
+.sidebar-divider{margin:14px 3px 3px}
+.history-head{margin:10px 6px 6px}
+.history-item{height:39px}
+.sidebar-bottom{padding-top:10px;border-top:1px solid var(--line)}
+.profile-trigger{width:100%;min-height:58px;display:flex;align-items:center;gap:11px;padding:7px 8px;border:0;border-radius:11px;background:transparent;text-align:right;color:var(--text)}
+.profile-trigger:hover{background:var(--surface-hover)}
+.profile-trigger .avatar{width:39px;height:39px;flex:none;font-size:16px}
+.profile-copy{display:grid;gap:4px;flex:1;min-width:0}
+.profile-copy b{font-size:13px;font-weight:650}
+.profile-copy small{font-size:10px;color:var(--muted)}
+.profile-chevron{color:var(--faint);display:grid;place-items:center}
+.profile-chevron svg{width:16px;height:16px}
+@media(max-width:640px){
+ .sidebar{width:min(390px,88vw);padding:18px 16px calc(12px + env(safe-area-inset-bottom))}
+ .sidebar-head{padding-bottom:20px}
+ .sidebar-navigation .new-chat{height:45px}
+ .side-link{height:41px}
+ .history-item{height:41px}
+ .profile-trigger{min-height:60px}
+}
