@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101114">
+  <meta name="description" content="Pix — واجهة محادثة ذكاء اصطناعي محلية مستقلة">
+  <title>Pix — مساحة المحادثة</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./icons.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-top">
+        <a class="brand" href="#" aria-label="Pix home">
+          <span class="brand-mark">p<span>✳</span></span><span class="brand-name">pix</span>
+        </a>
+        <button class="icon-btn mobile-only" id="closeSidebar" aria-label="إغلاق القائمة" data-icon="close"></button>
+      </div>
+      <button class="new-chat" id="newChat"><span data-icon="edit"></span><span>محادثة جديدة</span><kbd>⌘ K</kbd></button>
+      <label class="search-box"><span data-icon="search"></span><input id="searchChats" placeholder="ابحث في محادثاتك"><kbd>⌘ F</kbd></label>
+      <div class="side-section">
+        <div class="section-label">مساحة العمل</div>
+        <button class="nav-item active"><span data-icon="messages"></span> المحادثات</button>
+        <button class="nav-item"><span data-icon="library"></span> المكتبة</button>
+        <button class="nav-item"><span data-icon="discover"></span> استكشف</button>
+      </div>
+      <div class="history-head"><span class="section-label">الأخيرة</span><button class="text-icon" id="clearSearch" title="مسح البحث" data-icon="filter"></button></div>
+      <div class="history-list" id="historyList">
+        <button class="history-item selected"><span data-icon="message"></span><span>بداية جديدة مع Pix</span><span class="history-dot"></span></button>
+        <button class="history-item"><span data-icon="message"></span><span>أفكار لتطوير المشروع</span></button>
+        <button class="history-item"><span data-icon="message"></span><span>تنظيم ملفات JavaScript</span></button>
+        <button class="history-item"><span data-icon="message"></span><span>تصميم واجهة حديثة</span></button>
+      </div>
+      <div class="side-bottom">
+        <button class="profile-card" id="profileButton"><span class="avatar">F</span><span class="profile-copy"><b>مساحة شخصية</b><small>الحساب المحلي</small></span><span data-icon="more"></span></button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="topbar-start">
+          <button class="icon-btn mobile-menu" id="openSidebar" aria-label="فتح القائمة" data-icon="menu"></button>
+          <span class="crumb">Pix <span class="crumb-sep">/</span> <b>محادثة جديدة</b></span>
+        </div>
+        <div class="topbar-actions">
+          <button class="model-pill" id="modelButton"><span class="model-spark">✳</span><span id="modelName">Pix Smart</span><span data-icon="chevron"></span></button>
+          <button class="icon-btn" id="themeToggle" aria-label="تغيير المظهر" data-icon="sun"></button>
+          <button class="icon-btn" id="shareButton" aria-label="مشاركة" data-icon="share"></button>
+        </div>
+      </header>
+
+      <section class="conversation" id="conversation">
+        <div class="welcome" id="welcome">
+          <div class="welcome-orb"><span>✳</span></div>
+          <div class="eyebrow"><span class="status-dot"></span> مساحة تفكيرك تبدأ هنا</div>
+          <h1>أهلاً بك في <span>Pix</span></h1>
+          <p>فكّر بصوت عالٍ، اسأل، ابتكر، أو ابدأ من فكرة صغيرة.</p>
+          <div class="suggestions" id="suggestions">
+            <button class="suggestion" data-prompt="ساعدني في ترتيب أفكاري وتحويلها إلى خطة واضحة"><span data-icon="compass"></span><span><b>رتّب أفكاري</b><small>حوّل الفكرة إلى خطة واضحة</small></span><span class="suggestion-arrow" data-icon="arrow-up-left"></span></button>
+            <button class="suggestion" data-prompt="اكتب لي كود JavaScript نظيف واشرح طريقة عمله"><span data-icon="code"></span><span><b>اكتب كودًا</b><small>ابنِ شيئًا جديدًا خطوة بخطوة</small></span><span class="suggestion-arrow" data-icon="arrow-up-left"></span></button>
+            <button class="suggestion" data-prompt="اقترح أفكارًا إبداعية لتطوير واجهة تطبيق"><span data-icon="palette"></span><span><b>ابتكر تصميمًا</b><small>استكشف اتجاهات بصرية مختلفة</small></span><span class="suggestion-arrow" data-icon="arrow-up-left"></span></button>
+            <button class="suggestion" data-prompt="لخّص هذا الموضوع في نقاط سهلة وواضحة"><span data-icon="sparkles"></span><span><b>لخّص موضوعًا</b><small>استخرج المهم بدون تعقيد</small></span><span class="suggestion-arrow" data-icon="arrow-up-left"></span></button>
+          </div>
+        </div>
+        <div class="messages" id="messages" aria-live="polite"></div>
+      </section>
+
+      <footer class="composer-wrap">
+        <form class="composer" id="chatForm">
+          <textarea id="promptInput" rows="1" placeholder="اكتب رسالتك إلى Pix..." aria-label="رسالتك"></textarea>
+          <div class="composer-tools">
+            <div class="tool-group">
+              <button type="button" class="tool-btn" id="attachButton"><span data-icon="plus"></span><span>إضافة</span></button>
+              <button type="button" class="tool-btn" id="toolsButton"><span data-icon="sliders"></span><span>الأدوات</span></button>
+            </div>
+            <div class="send-group"><span class="hint">Enter للإرسال · Shift + Enter لسطر جديد</span><button class="send-btn" id="sendButton" type="submit" aria-label="إرسال"><span data-icon="arrow-up"></span></button></div>
+          </div>
+        </form>
+        <div class="disclaimer">Pix قد يخطئ أحيانًا. راجع المعلومات المهمة دائمًا.</div>
+      </footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="popover hidden" id="modelMenu">
+    <button data-model="Pix Smart"><span class="model-spark">✳</span><span><b>Pix Smart</b><small>للمهام المتعمقة والتفكير</small></span><span class="check">✓</span></button>
+    <button data-model="Pix Fast"><span class="fast-mark">ϟ</span><span><b>Pix Fast</b><small>إجابات سريعة ومباشرة</small></span></button>
+  </div>
+</body>
+</html>
