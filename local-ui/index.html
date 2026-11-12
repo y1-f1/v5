@@ -44,11 +44,12 @@
   </section>
   <footer class="composer-dock"><form class="composer" id="chatForm">
    <textarea id="promptInput" rows="1" placeholder="اكتب رسالتك إلى Pix..." aria-label="رسالتك"></textarea>
+   <div class="attachment-preview" id="attachmentPreview" hidden></div>
    <div class="model-menu hidden" id="modelMenu" role="menu" aria-label="اختيار النموذج">
     <button type="button" data-model="Pix Smart" role="menuitem"><span class="model-glyph" data-icon="pix-mark"></span><span><b>Pix Smart</b><small>للمهام المتعمقة والتفكير</small></span><span class="check" data-icon="check"></span></button>
     <button type="button" data-model="Pix Fast" role="menuitem"><span class="fast-glyph">ϟ</span><span><b>Pix Fast</b><small>إجابات سريعة ومباشرة</small></span></button>
    </div>
-   <div class="composer-bottom"><div class="composer-actions"><button type="button" class="model-inline" id="inlineModel" aria-haspopup="menu" aria-expanded="false"><span class="model-glyph" data-icon="pix-mark"></span><span id="inlineModelName">Pix Smart</span><span data-icon="chevron-down"></span></button></div><button class="send-btn" id="sendButton" type="submit" aria-label="إرسال" data-icon="arrow-up"></button></div>
+   <div class="composer-bottom"><div class="composer-actions"><input type="file" id="fileInput" hidden multiple><button type="button" class="composer-tool-btn" id="attachButton" aria-label="إرفاق ملفات" title="إرفاق ملفات"><span class="plus-glyph">+</span></button><div class="tools-wrap"><button type="button" class="composer-tool-btn" id="toolsButton" aria-label="الأدوات" title="الأدوات"><span class="tool-glyph">☷</span></button><div class="tools-menu hidden" id="toolsMenu"><button type="button" data-tool="بحث الويب">بحث الويب</button><button type="button" data-tool="إنشاء صورة">إنشاء صورة</button><button type="button" data-tool="تحليل ملف">تحليل ملف</button></div></div><button type="button" class="model-inline" id="inlineModel" aria-haspopup="menu" aria-expanded="false"><span class="model-glyph" data-icon="pix-mark"></span><span id="inlineModelName">Pix Smart</span><span data-icon="chevron-down"></span></button></div><button class="send-btn" id="sendButton" type="submit" aria-label="إرسال" data-icon="arrow-up"></button></div>
   </form></footer>
  </main>
 </div>
