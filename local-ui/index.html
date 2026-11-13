@@ -4,37 +4,52 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#28251f"><meta name="description" content="Pix — مساحة تفكيرك">
 <title>Pix</title><link rel="stylesheet" href="./styles.css">
+<!-- مكتبة الأيقونات Lucide -->
+<script src="https://unpkg.com/lucide@latest"></script>
 <script defer src="./icons.js"></script><script defer src="./app.js"></script>
 </head>
 <body>
 <div class="app-shell">
+ <!-- الشريط الجانبي المحدث ليطابق الصورة -->
  <aside class="sidebar" id="sidebar" aria-label="القائمة الجانبية">
-  <div class="sidebar-head"><a class="brand" href="#" aria-label="Pix"><span>pix</span><span class="brand-symbol" data-icon="pix-mark"></span></a><button class="icon-btn" id="closeSidebar" aria-label="إغلاق القائمة" data-icon="close"></button></div>
-  <nav class="sidebar-navigation" aria-label="التنقل">
-   <button class="new-chat" id="newChat"><span data-icon="edit"></span><span>محادثة جديدة</span><span class="new-chat-plus">+</span></button>
-   <label class="search-box"><span data-icon="search"></span><input id="searchChats" placeholder="ابحث في محادثاتك"></label>
-   <div class="sidebar-section-label">مساحة العمل</div>
-   <button class="side-link active"><span data-icon="messages"></span><span>المحادثات</span></button>
-   <button class="side-link"><span data-icon="folder"></span><span>المشاريع</span></button>
-   <button class="side-link"><span data-icon="code"></span><span>مساحة البرمجة</span></button>
-   <button class="side-link"><span data-icon="shapes"></span><span>الملفات والأدوات</span></button>
-  </nav>
-  <div class="sidebar-divider"></div>
-  <div class="history-head"><span>الأخيرة</span><button class="icon-btn small" id="clearSearch" aria-label="مسح البحث" data-icon="close"></button></div>
-  <div class="history-list" id="historyList">
-   <button class="history-item selected"><span class="history-bullet"></span><span>بداية جديدة مع Pix</span></button>
-   <button class="history-item"><span class="history-bullet"></span><span>أفكار لتطوير المشروع</span></button>
-   <button class="history-item"><span class="history-bullet"></span><span>تنظيم ملفات JavaScript</span></button>
-   <button class="history-item"><span class="history-bullet"></span><span>تصميم واجهة حديثة</span></button>
+  <div class="sidebar-head">
+   <div class="brand" aria-label="Pix">
+    <span class="brand-symbol" data-lucide="ghost"></span>
+    <span>Pix</span>
+   </div>
+   <button class="icon-btn" id="closeSidebar" aria-label="إغلاق القائمة"><i data-lucide="x"></i></button>
   </div>
+  
+  <nav class="sidebar-navigation" aria-label="التنقل">
+   <button class="side-link active" data-nav="chats"><i data-lucide="message-circle"></i><span>Chats</span></button>
+   <button class="side-link" data-nav="projects"><i data-lucide="folder"></i><span>Projects</span></button>
+   <button class="side-link" data-nav="code"><i data-lucide="code"></i><span>Code</span></button>
+   <button class="side-link" data-nav="artifacts"><i data-lucide="box"></i><span>Artifacts</span></button>
+  </nav>
+  
+  <div class="sidebar-divider"></div>
+  
+  <div class="recents-section">
+   <div class="sidebar-section-label">Recents</div>
+   <div class="history-list" id="historyList">
+    <button class="history-item"><i data-lucide="message-square"></i><span>استنساخ واجهة arena.ai</span></button>
+    <button class="history-item"><i data-lucide="message-square"></i><span>بناء منصة أدوات ويب عربية حديثة</span></button>
+    <button class="history-item"><i data-lucide="message-square"></i><span>تطوير أيقونات هيدرا احترافية</span></button>
+    <button class="history-item"><i data-lucide="message-square"></i><span>لوحة تحكم PhoneCompare Bot الكاملة</span></button>
+   </div>
+  </div>
+  
   <div class="sidebar-bottom">
-   <button class="profile-trigger" id="openSettings" aria-label="الحساب والإعدادات" title="الحساب والإعدادات">
-    <span class="avatar">P</span>
-    <span class="profile-copy"><b>Pix</b><small>الحساب والإعدادات</small></span>
-    <span class="profile-chevron" data-icon="chevron-left"></span>
+   <button class="profile-trigger" id="openSettings" aria-label="الحساب والإعدادات">
+    <span class="avatar">ع</span>
+   </button>
+   <button class="new-chat-btn" id="newChat">
+    <i data-lucide="plus"></i>
+    <span>New chat</span>
    </button>
   </div>
  </aside>
+ 
  <div class="scrim" id="scrim"></div>
  <main class="main-area">
   <header class="topbar"><a class="brand top-brand" href="#" aria-label="Pix"><span class="brand-symbol" data-icon="pix-mark"></span><span>pix</span></a><button class="icon-btn menu-trigger" id="openSidebar" aria-label="فتح القائمة" data-icon="menu"></button></header>
