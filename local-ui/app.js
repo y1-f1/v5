@@ -8,6 +8,7 @@
  const applyTheme=()=>{const dark=themeChoice==='system'?matchMedia('(prefers-color-scheme: dark)').matches:themeChoice==='dark';root.dataset.theme=dark?'dark':'light';document.querySelector('meta[name="theme-color"]').content=dark?'#28251f':'#f2eee4';document.querySelectorAll('[data-theme-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===themeChoice)))};
  const applyFont=()=>{root.dataset.chatFont=String(fontSize);$('#fontSizeSetting').value=fontSize;$('#fontSizeValue').textContent=fontSize+'px'};
  applyTheme();applyFont();
+ 
  const settingsPanel=$('#settingsPanel'),settingsBackdrop=$('#settingsBackdrop');
  const openSettings=()=>{closeSidebar();settingsPanel.classList.add('open');settingsBackdrop.classList.add('open');settingsPanel.setAttribute('aria-hidden','false');settingsBackdrop.setAttribute('aria-hidden','false');$('#enterSendSetting').checked=enterSend;$('#fontSizeSetting').value=fontSize;$('#fontSizeValue').textContent=fontSize+'px';$('#closeSettings').focus()};
  const closeSettings=()=>{settingsPanel.classList.remove('open');settingsBackdrop.classList.remove('open');settingsPanel.setAttribute('aria-hidden','true');settingsBackdrop.setAttribute('aria-hidden','true')};
@@ -16,23 +17,98 @@
  $('#fontSizeSetting').addEventListener('input',e=>{fontSize=Number(e.target.value);applyFont();savePrefs()});
  $('#enterSendSetting').addEventListener('change',e=>{enterSend=e.target.checked;savePrefs()});
  if(themeChoice==='system')matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',applyTheme);
+ 
  const toast=t=>{const el=$('#toast');el.textContent=t;el.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove('show'),2100)};
  const fit=()=>{input.style.height='auto';input.style.height=Math.min(input.scrollHeight,180)+'px'};
- const closeSidebar=()=>{sidebar.classList.remove('open');scrim.classList.remove('show')};
- const openSidebar=()=>{sidebar.classList.add('open');scrim.classList.add('show')};
+ 
+ // تحديث دوال الفتح والقفل لتنظيف تأثيرات السحب
+ const closeSidebar=()=>{
+   sidebar.classList.remove('open');
+   scrim.classList.remove('show');
+   sidebar.style.transform = ''; 
+ };
+ const openSidebar=()=>{
+   sidebar.classList.add('open');
+   scrim.classList.add('show');
+   sidebar.style.transform = ''; 
+ };
+ 
  const closeModelMenu=()=>{menu.classList.add('hidden');modelButton.setAttribute('aria-expanded','false')};
  const toggleModelMenu=()=>{const opening=menu.classList.contains('hidden');menu.classList.toggle('hidden',!opening);modelButton.setAttribute('aria-expanded',String(opening))};
  const addMessage=(text,who)=>{const item=document.createElement('article');item.className='message '+who;const body=document.createElement('div');body.className='message-body';if(who==='assistant'){const label=document.createElement('div');label.className='message-label';label.textContent='Pix';body.append(label)}const content=document.createElement('div');content.className='message-content';content.textContent=text;body.append(content);if(who==='assistant'){const note=document.createElement('div');note.className='message-disclaimer';note.textContent='قد يقدم Pix معلومات غير دقيقة. تحقق من المعلومات المهمة.';body.append(note)}item.append(body);messages.append(item);item.scrollIntoView({behavior:'smooth',block:'nearest'})};
  const send=text=>{const value=(text||input.value).trim();if(!value)return;welcome.hidden=true;addMessage(value,'user');input.value='';fit();closeModelMenu();setTimeout(()=>addMessage('واجهة العرض المحلية استلمت رسالتك. ربط نموذج الذكاء الاصطناعي يحتاج إلى توصيل Backend منفصل.','assistant'),350)};
+ 
  form.addEventListener('submit',e=>{e.preventDefault();send()});input.addEventListener('input',fit);input.addEventListener('keydown',e=>{if(e.key==='Enter'&&enterSend&&!e.shiftKey&&!e.isComposing){e.preventDefault();send()}});
  $('#newChat').addEventListener('click',()=>{messages.replaceChildren();welcome.hidden=false;input.value='';fit();closeSidebar();closeModelMenu();input.focus()});
+ 
  const fileInput=$('#fileInput'),attachmentPreview=$('#attachmentPreview');
  $('#attachButton').addEventListener('click',()=>fileInput.click());
  fileInput.addEventListener('change',()=>{const files=[...fileInput.files];attachmentPreview.replaceChildren();files.forEach(file=>{const chip=document.createElement('span');chip.className='attachment-chip';chip.textContent=file.name;attachmentPreview.append(chip)});attachmentPreview.hidden=!files.length});
  const toolsButton=$('#toolsButton'),toolsMenu=$('#toolsMenu');
  toolsButton.addEventListener('click',e=>{e.stopPropagation();toolsMenu.classList.toggle('hidden')});
  toolsMenu.addEventListener('click',e=>{const b=e.target.closest('[data-tool]');if(!b)return;toast('تم اختيار: '+b.dataset.tool);toolsMenu.classList.add('hidden')});
- $('#openSidebar').addEventListener('click',openSidebar);$('#closeSidebar').addEventListener('click',closeSidebar);scrim.addEventListener('click',closeSidebar);
+ 
+ $('#openSidebar').addEventListener('click',openSidebar);
+ $('#closeSidebar').addEventListener('click',closeSidebar);
+ scrim.addEventListener('click',closeSidebar); // الطريقة الأولى: الضغط على المساحة الفارغة
+ 
+ // ==========================================
+ // الطريقة الثانية: السحب لليمين لإغلاق الشريط
+ // ==========================================
+ let touchStartX = 0;
+ let touchStartY = 0;
+ let isSwiping = false;
+
+ sidebar.addEventListener('touchstart', (e) => {
+   touchStartX = e.touches[0].clientX;
+   touchStartY = e.touches[0].clientY;
+   isSwiping = false;
+   sidebar.style.transition = 'none'; // إيقاف الأنيميشن مؤقتاً عشان السحب يكون سلس
+ }, { passive: true });
+
+ sidebar.addEventListener('touchmove', (e) => {
+   if (!touchStartX) return;
+   const currentX = e.touches[0].clientX;
+   const currentY = e.touches[0].clientY;
+   const deltaX = currentX - touchStartX;
+   const deltaY = currentY - touchStartY;
+
+   // التأكد إن حركة اللمس أفقية (يمين) مش رأسية (سكرول)
+   if (!isSwiping) {
+     if (deltaX > 10 && Math.abs(deltaX) > Math.abs(deltaY)) {
+       isSwiping = true;
+     }
+   }
+
+   if (isSwiping) {
+     e.preventDefault(); // منع السكرول أثناء السحب
+     const moveX = Math.max(0, deltaX); // السحب يمين بس
+     sidebar.style.transform = `translateX(${moveX}px)`;
+   }
+ }, { passive: false });
+
+ sidebar.addEventListener('touchend', (e) => {
+   sidebar.style.transition = ''; // إرجاع الأنيميشن
+   
+   if (!isSwiping) return;
+
+   const currentX = e.changedTouches[0].clientX;
+   const deltaX = currentX - touchStartX;
+
+   // لو سحب أكتر من 80 بكسل أو 30% من عرض الشريط، اقفله
+   if (deltaX > 80 || deltaX > sidebar.offsetWidth * 0.3) {
+     closeSidebar();
+   } else {
+     // لو سحب بسيط، رجعه مكانه
+     sidebar.style.transform = 'translateX(0)';
+   }
+   
+   touchStartX = 0;
+   touchStartY = 0;
+   isSwiping = false;
+ });
+ // ==========================================
+
  modelButton.addEventListener('click',e=>{e.stopPropagation();toggleModelMenu()});
  menu.addEventListener('click',e=>{const b=e.target.closest('[data-model]');if(!b)return;selectedModel=b.dataset.model;$('#inlineModelName').textContent=selectedModel;menu.querySelectorAll('.check').forEach(el=>el.innerHTML='');const active=menu.querySelector('[data-model="'+selectedModel+'"] .check');if(active)active.innerHTML=PixIcons.render('check',16);closeModelMenu()});
  document.addEventListener('click',e=>{if(!e.target.closest('#modelMenu')&&!e.target.closest('#inlineModel'))closeModelMenu();if(!e.target.closest('#toolsMenu')&&!e.target.closest('#toolsButton'))toolsMenu.classList.add('hidden')});
