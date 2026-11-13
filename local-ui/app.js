@@ -36,14 +36,8 @@
  modelButton.addEventListener('click',e=>{e.stopPropagation();toggleModelMenu()});
  menu.addEventListener('click',e=>{const b=e.target.closest('[data-model]');if(!b)return;selectedModel=b.dataset.model;$('#inlineModelName').textContent=selectedModel;menu.querySelectorAll('.check').forEach(el=>el.innerHTML='');const active=menu.querySelector('[data-model="'+selectedModel+'"] .check');if(active)active.innerHTML=PixIcons.render('check',16);closeModelMenu()});
  document.addEventListener('click',e=>{if(!e.target.closest('#modelMenu')&&!e.target.closest('#inlineModel'))closeModelMenu();if(!e.target.closest('#toolsMenu')&&!e.target.closest('#toolsButton'))toolsMenu.classList.add('hidden')});
- 
- // تم إزالة مستمعي الأحداث الخاصة بصندوق البحث لأن الصندوق لم يعد موجوداً في التصميم الجديد
- 
+ $('#searchChats')?.addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();document.querySelectorAll('.history-item').forEach(row=>row.hidden=!row.textContent.toLowerCase().includes(q))});
+ $('#clearSearch')?.addEventListener('click',()=>{$('#searchChats').value='';document.querySelectorAll('.history-item').forEach(row=>row.hidden=false)});
  document.querySelectorAll('.history-item').forEach(row=>row.addEventListener('click',()=>{document.querySelectorAll('.history-item').forEach(x=>x.classList.remove('selected'));row.classList.add('selected');closeSidebar();toast('محادثة تجريبية')}));
  document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();$('#newChat').click()}if(e.key==='Escape'){closeSidebar();closeModelMenu();closeSettings()}});
-
- // تفعيل أيقونات Lucide
- if (window.lucide) {
-  window.lucide.createIcons();
- }
 })();
