@@ -8,21 +8,21 @@
 </head>
 <body>
 <div class="app-shell">
- <!-- الشريط الجانبي المحدث -->
+ <!-- الشريط الجانبي المطابق لـ Claude -->
  <aside class="sidebar" id="sidebar" aria-label="القائمة الجانبية">
   <div class="sidebar-head">
-    <a class="brand" href="#" aria-label="Claude">
-      <span>Claude</span>
-    </a>
+    <a class="brand" href="#" aria-label="Claude"><span>Claude</span></a>
     <span class="ghost-icon" data-icon="ghost"></span>
   </div>
   
   <nav class="sidebar-navigation" aria-label="التنقل">
-   <button class="side-link active"><span>Chats</span><span data-icon="chats"></span></button>
+   <button class="side-link"><span>Chats</span><span data-icon="chats"></span></button>
    <button class="side-link"><span>Projects</span><span data-icon="folder"></span></button>
    <button class="side-link"><span>Code</span><span data-icon="code"></span></button>
    <button class="side-link"><span>Artifacts</span><span data-icon="artifacts"></span></button>
   </nav>
+
+  <div class="sidebar-divider"></div>
 
   <div class="history-head"><span>Recents</span></div>
   <div class="history-list" id="historyList">
@@ -39,6 +39,7 @@
  </aside>
  
  <div class="scrim" id="scrim"></div>
+ 
  <main class="main-area">
   <header class="topbar"><a class="brand top-brand" href="#" aria-label="Pix"><span class="brand-symbol" data-icon="pix-mark"></span><span>pix</span></a><button class="icon-btn menu-trigger" id="openSidebar" aria-label="فتح القائمة" data-icon="menu"></button></header>
   <section class="conversation" id="conversation">
