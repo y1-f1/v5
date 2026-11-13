@@ -10,7 +10,7 @@
 /* =========================================
    الشريط الجانبي المطابق تماماً لـ Claude
    ========================================= */
-.sidebar{position:fixed;z-index:30;top:0;bottom:0;right:0;width:min(340px,88vw);display:flex;flex-direction:column;padding:24px 20px;background:#1a1a1a;border-left:1px solid #2d2d2d;box-shadow:var(--shadow);transform:translateX(105%);transition:transform .25s ease}
+.sidebar{position:fixed;z-index:30;top:0;bottom:0;right:0;width:min(340px,88vw);display:flex;flex-direction:column;padding:24px 20px;background:#1a1a1a;border-left:1px solid #2d2d2d;box-shadow:var(--shadow);transform:translateX(105%);transition:transform .25s ease; touch-action: pan-y;}
 .sidebar.open{transform:translateX(0)}
 
 /* رأس الشريط الجانبي */
