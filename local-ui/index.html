@@ -2,36 +2,59 @@
 <html lang="ar" dir="rtl" data-theme="dark">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#28251f"><meta name="description" content="Pix — مساحة تفكيرك">
+<meta name="theme-color" content="#1a1a1a"><meta name="description" content="Pix — مساحة تفكيرك">
 <title>Pix</title><link rel="stylesheet" href="./styles.css">
+<!-- مكتبة أيقونات Lucide -->
+<script src="https://unpkg.com/lucide@latest"></script>
 <script defer src="./icons.js"></script><script defer src="./app.js"></script>
 </head>
 <body>
 <div class="app-shell">
+ <!-- الشريط الجانبي المعدل ليطابق تصميم Claude -->
  <aside class="sidebar" id="sidebar" aria-label="القائمة الجانبية">
-  <div class="sidebar-head"><a class="brand" href="#" aria-label="Pix"><span>pix</span><span class="brand-symbol" data-icon="pix-mark"></span></a><button class="icon-btn" id="closeSidebar" aria-label="إغلاق القائمة" data-icon="close"></button></div>
-  <nav class="sidebar-navigation" aria-label="التنقل">
-   <button class="new-chat" id="newChat"><span data-icon="edit"></span><span>محادثة جديدة</span><span class="new-chat-plus">+</span></button>
-   <label class="search-box"><span data-icon="search"></span><input id="searchChats" placeholder="ابحث في محادثاتك"></label>
-   <div class="sidebar-section-label">مساحة العمل</div>
-   <button class="side-link active"><span data-icon="messages"></span><span>المحادثات</span></button>
-   <button class="side-link"><span data-icon="folder"></span><span>المشاريع</span></button>
-   <button class="side-link"><span data-icon="code"></span><span>مساحة البرمجة</span></button>
-   <button class="side-link"><span data-icon="shapes"></span><span>الملفات والأدوات</span></button>
-  </nav>
-  <div class="sidebar-divider"></div>
-  <div class="history-head"><span>الأخيرة</span><button class="icon-btn small" id="clearSearch" aria-label="مسح البحث" data-icon="close"></button></div>
-  <div class="history-list" id="historyList">
-   <button class="history-item selected"><span class="history-bullet"></span><span>بداية جديدة مع Pix</span></button>
-   <button class="history-item"><span class="history-bullet"></span><span>أفكار لتطوير المشروع</span></button>
-   <button class="history-item"><span class="history-bullet"></span><span>تنظيم ملفات JavaScript</span></button>
-   <button class="history-item"><span class="history-bullet"></span><span>تصميم واجهة حديثة</span></button>
+  <div class="sidebar-header">
+   <div class="logo-area">
+    <span class="ghost-icon"><i data-lucide="ghost"></i></span>
+    <h1 class="logo-text">Claude</h1>
+   </div>
+   <button class="icon-btn" id="closeSidebar" aria-label="إغلاق القائمة">
+    <i data-lucide="x"></i>
+   </button>
   </div>
-  <div class="sidebar-bottom">
-   <button class="profile-trigger" id="openSettings" aria-label="الحساب والإعدادات" title="الحساب والإعدادات">
-    <span class="avatar">P</span>
-    <span class="profile-copy"><b>Pix</b><small>الحساب والإعدادات</small></span>
-    <span class="profile-chevron" data-icon="chevron-left"></span>
+  <nav class="sidebar-nav">
+   <button class="nav-item active" data-nav="chats">
+    <i data-lucide="message-circle"></i>
+    <span>Chats</span>
+   </button>
+   <button class="nav-item" data-nav="projects">
+    <i data-lucide="folder"></i>
+    <span>Projects</span>
+   </button>
+   <button class="nav-item" data-nav="code">
+    <i data-lucide="code"></i>
+    <span>Code</span>
+   </button>
+   <button class="nav-item" data-nav="artifacts">
+    <i data-lucide="box"></i>
+    <span>Artifacts</span>
+   </button>
+  </nav>
+  <div class="recents-section">
+   <div class="recents-header">Recents</div>
+   <div class="recents-list">
+    <button class="recents-item"><i data-lucide="message-square"></i> استنساخ واجهة arena.ai</button>
+    <button class="recents-item"><i data-lucide="message-square"></i> بناء منصة أدوات ويب عربية حديثة</button>
+    <button class="recents-item"><i data-lucide="message-square"></i> تطوير أيقونات هيدرا احترافية</button>
+    <button class="recents-item"><i data-lucide="message-square"></i> لوحة تحكم PhoneCompare Bot الكاملة</button>
+   </div>
+  </div>
+  <div class="sidebar-footer">
+   <button class="new-chat-btn">
+    <i data-lucide="plus"></i>
+    <span>New chat</span>
+   </button>
+   <button class="profile-btn" aria-label="الملف الشخصي">
+    <span>ع</span>
    </button>
   </div>
  </aside>
