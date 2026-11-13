@@ -1,6 +1,10 @@
 /* Pix icon set — consistent 24px outline icons and an original P monogram. */
 (()=>{const paths={
 'pix-mark':'<path d="M7 21V3h6.1a6 6 0 0 1 0 12H7"/>',
+ghost:'<path d="M12 2a8 8 0 0 0-8 8v11l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V10a8 8 0 0 0-8-8Z"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/>',
+chats:'<path d="M8 6h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2l-2 2v-2H8a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"/><path d="M4 10V4a2 2 0 0 1 2-2h10"/>',
+'artifacts':'<path d="m14 8-4 4"/><path d="M18 10 8 20"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/>',
+'chat-single':'<path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H3l2-4a8.5 8.5 0 1 1 16-4.5Z"/>',
 edit:'<path d="M12 20h9"/><path d="m16.5 3.5 4 4L8 20l-5 1 1-5Z"/>',
 search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
 messages:'<path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8Z"/>',
